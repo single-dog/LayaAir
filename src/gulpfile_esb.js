@@ -4,7 +4,7 @@ const glsl = require('rollup-plugin-glsl');
 const path = require('path');
 const fs = require('fs');
 var matched = require('matched');
-const production = !process.env.ROLLUP_WATCH;
+const genSourcemap = process.argv[process.argv.length - 1] === 'build_dev';// !process.env.ROLLUP_WATCH;
 const gulp = require('gulp');
 const rollup = require('rollup');
 //处理文件流使用的插件
@@ -16,6 +16,7 @@ const rename = require('gulp-rename');
 var Stream = require('stream');
 var layaProDir = '../../LayaPro/bin/res/codefiles/editor/engine';
 var buildDir = layaProDir; // "../build/js";
+
 //编译新的库文件只需要在packsDef中配置一下新的库就可以了
 var packsDef = [
     {
@@ -401,7 +402,7 @@ gulp.task('buildJS', async function () {
                 esbuild({
                     include:/.*(.ts|.d.ts|.tsx)$/,
                     tsconfig:"./layaAir/tsconfig.json",
-                    sourceMap: true,
+                    sourceMap: genSourcemap,
                     // minify:true
                     // target:"es2015"
                 }),
@@ -412,7 +413,7 @@ gulp.task('buildJS', async function () {
                 // }),
                 glsl({
                     include: /.*(.glsl|.vs|.fs)$/,
-                    sourceMap: false,
+                    sourceMap: genSourcemap,
                     compress: false
                 }),
             ]
@@ -424,7 +425,7 @@ gulp.task('buildJS', async function () {
                 format: 'iife',
                 outro: 'exports.static=_static;',  //由于static是关键字，无法通过ts编译。AS需要这个函数，临时强插
                 name: 'Laya',
-                sourcemap: false
+                sourcemap: genSourcemap
             });
         }
         else {
@@ -432,7 +433,7 @@ gulp.task('buildJS', async function () {
                 file: packsDef[i].out,
                 format: 'iife',
                 name: 'Laya',
-                sourcemap: false,
+                sourcemap: genSourcemap,
                 extend: true,
                 globals: { 'Laya': 'Laya' }
             });
@@ -518,8 +519,11 @@ gulp.task("compresstsnewJs", function () {
 //             'CopyTSJSLibsFileToTS', 'CopyJSFileToTSCompatible', 
 //             'CopyDTS', 'compressJs', 'compresstsnewJs'));
  
-            
-gulp.task('build', 
-gulp.series('buildJS', 'ModifierJs', 'ConcatBox2dPhysics', 
-            'ConcatCannonPhysics',  
-            'ConcatBulletPhysics' ));
+ 
+ 
+// return;
+let build_series  = gulp.series('buildJS', 'ModifierJs', 'ConcatBox2dPhysics', 
+'ConcatCannonPhysics',  
+'ConcatBulletPhysics' )          
+gulp.task('build',build_series);
+gulp.task('build_dev', build_series);

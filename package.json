@@ -4,7 +4,9 @@
   "description": "",
   "main": "layaAir.config.js",
   "scripts": {
-    "build": "cd src/publishTool&&cmd /k publish.bat",
+    "build_dev": "gulp --gulpfile=src/gulpfile_esb.js build_dev",
+    "build": "gulp --gulpfile=src/gulpfile_esb.js build",
+    "build_old": "cd src/publishTool&&cmd /k publish.bat",
     "compile": "gulp LayaAirBuild",
     "buildDoc": "cd src/generateDoc&&cmd /k run.bat"
   },
