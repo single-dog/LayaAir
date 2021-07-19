@@ -1,0 +1,96 @@
+{
+  "_from": "rollup-plugin-esbuild",
+  "_id": "rollup-plugin-esbuild@4.2.3",
+  "_inBundle": false,
+  "_integrity": "sha512-GWyDUPv79Iw4uQdizD7ch7yA+wiB9W4Ye01RmO/kuF3yjybluJT5rbmLAnyv3kWmOF8suOjf+TvvBCXEj6qSAw==",
+  "_location": "/rollup-plugin-esbuild",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "rollup-plugin-esbuild",
+    "name": "rollup-plugin-esbuild",
+    "escapedName": "rollup-plugin-esbuild",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/rollup-plugin-esbuild/-/rollup-plugin-esbuild-4.2.3.tgz",
+  "_shasum": "3d719e58e7a5f84515fe52a58d35bc97a9e7e12c",
+  "_spec": "rollup-plugin-esbuild",
+  "_where": "D:\\lkm\\_TS_LayaAir\\layaairTS",
+  "author": {
+    "name": "EGOIST"
+  },
+  "bugs": {
+    "url": "https://github.com/egoist/rollup-plugin-esbuild/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "@rollup/pluginutils": "^4.1.0",
+    "joycon": "^3.0.1",
+    "jsonc-parser": "^3.0.0"
+  },
+  "deprecated": false,
+  "description": "**💛 You can help the author become a full-time open-source maintainer by [sponsoring him on GitHub](https://github.com/sponsors/egoist).**",
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "@types/mock-fs": "^4.13.0",
+    "@types/node": "14.14.37",
+    "esbuild": "^0.11.11",
+    "jest": "^26.6.3",
+    "mock-fs": "^4.14.0",
+    "prettier": "^2.2.1",
+    "rollup": "^2.45.2",
+    "rollup-plugin-dts": "^1.4.10",
+    "ts-jest": "^26.5.5",
+    "ts-node": "^9.1.1",
+    "typescript": "^3.9.9"
+  },
+  "engines": {
+    "node": ">=12"
+  },
+  "files": [
+    "dist"
+  ],
+  "homepage": "https://github.com/egoist/rollup-plugin-esbuild#readme",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "name": "rollup-plugin-esbuild",
+  "peerDependencies": {
+    "esbuild": ">=0.10.1",
+    "rollup": "^1.20.0 || ^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/egoist/rollup-plugin-esbuild.git"
+  },
+  "scripts": {
+    "build": "ts-node scripts/build",
+    "example": "npm run build && rollup -c example/rollup.config.js",
+    "prepublishOnly": "npm run build",
+    "test": "jest"
+  },
+  "types": "dist/index.d.ts",
+  "version": "4.2.3",
+  "warnings": [
+    {
+      "code": "ENOTSUP",
+      "required": {
+        "node": ">=12"
+      },
+      "pkgid": "rollup-plugin-esbuild@4.2.3"
+    },
+    {
+      "code": "ENOTSUP",
+      "required": {
+        "node": ">=12"
+      },
+      "pkgid": "rollup-plugin-esbuild@4.2.3"
+    }
+  ]
+}
